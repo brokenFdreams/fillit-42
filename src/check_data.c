@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:41:38 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/24 16:03:22 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/24 16:31:45 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	check_data(char *data)
 	int j;
 	int k;
 
-	k = 0;
 	while (data && *data)
 	{
+		k = 0;
 		i = 0;
 		while (i < 4 && data)
 		{
@@ -29,6 +29,12 @@ void	check_data(char *data)
 			{
 				if (*data != '#' && *data != '.')
 					ft_error();
+				if (*data == '#')
+				{
+					if (k == 4)
+						ft_error();
+					k++;
+				}
 				data++;
 				j++;
 			}

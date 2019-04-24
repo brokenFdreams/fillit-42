@@ -6,13 +6,13 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:10:25 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/24 15:46:50 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/24 16:30:32 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-void	fillit(char	*data)
+void	fillit(char *data)
 {
 	write(1, "-", 1);
 }
