@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/23 15:08:28 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/24 12:43:28 by fsinged          ###   ########.fr       */
+/*   Created: 2019/04/24 14:46:40 by fsinged           #+#    #+#             */
+/*   Updated: 2019/04/24 15:17:38 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "../includes/fillit.h"
 
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "libft/libft.h"
-
-typedef struct		s_lst
+char	*read_file(char	*file)
 {
-	char			**square;
-	char			s;
-	struct t_lst	*next;
-}					t_lst
+	char	buf[BUFF_SIZE + 1];
+	int		ret;
+	int		fd;
 
-void	fillit(const int fd);
-
-#endif
+	fd = open(file, O_RDONLY);
+	ret = read(fd, buf, BUFF_SIZE);
+	close(fd);
+	if (ret == -1 || ret > 545)
+		ft_error();
+	return (ft_strdup(buf));
+}

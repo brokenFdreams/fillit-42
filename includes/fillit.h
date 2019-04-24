@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/23 15:10:25 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/23 15:17:53 by fsinged          ###   ########.fr       */
+/*   Created: 2019/04/23 15:08:28 by fsinged           #+#    #+#             */
+/*   Updated: 2019/04/24 15:18:31 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#ifndef FILLIT_H
+# define FILLIT_H
 
-char	*read_file(const int fd)
-{
-	char	*str;
-	char	*tmp;
-	int i;
+# include <fcntl.h>
+//# include <stdlib.h>
+//# include <unistd.h>
+# include "../libft/libft.h"
 
-	tmp = NULL;
-	str = ft_strnew(1);
-	while (get_next_line(fd, &tmp) == 1)
-	{
-		str = ft_strjoin(str, tmp);
-		free(tmp);
-	}
-	return (str);
-}
+# define BUFF_SIZE 545
 
-void	fillit(const int fd)
-{
-	char	*filedata;
+void	fillit(char *data);
+void	ft_error(void);
+char	*read_file(char *file);
 
-	filedata = read_file(fd);
-}
+#endif

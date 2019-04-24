@@ -6,14 +6,23 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:34:06 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/24 12:42:10 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/24 15:16:42 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
-	
+	char	*data;
+	int		fd;
+
+	if (argc != 2)
+	{
+		ft_putstr("usage: ./fillit target_file\n");
+		exit(0);
+	}
+	data = read_file(argv[1]);
+	fillit(data);
 	return (0);
 }
