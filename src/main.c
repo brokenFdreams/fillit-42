@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:34:06 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/24 15:16:42 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/24 15:47:31 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		main(int argc, char **argv)
 		exit(0);
 	}
 	data = read_file(argv[1]);
+	check_data(data);
 	fillit(data);
 	return (0);
 }

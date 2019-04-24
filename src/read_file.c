@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 14:46:40 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/24 15:17:38 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/24 15:31:59 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ char	*read_file(char	*file)
 	close(fd);
 	if (ret == -1 || ret > 545)
 		ft_error();
+	buf[ret] = '\0';
 	return (ft_strdup(buf));
 }
