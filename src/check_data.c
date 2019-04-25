@@ -6,27 +6,36 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:41:38 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/25 16:11:24 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/25 17:18:11 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
+#include <stdio.h>
 
-int		check_sign(int k, char c, int flag)
+int		check_sign(int k, char *data, int count, int i, int j)
 {
-	if (flag == 1)
+	if (data[count] != '#' && data[count] != '.')
+		ft_error();
+	if (data[count] == '#')
 	{
-		if (c != '#' && c != '.')
+		if (k == 4)
 			ft_error();
-		if (c == '#')
+		if (!((j != 0 && data[count - 1] == '#') ||
+			(j != 3 && data[count + 1] == '#') ||
+			(i != 0 && data[count - 5] == '#') ||
+			  (i != 3 && data[count + 5] == '#')))
 		{
-			if (k == 4)
-				ft_error();
-			k++;
+			printf("there");
+			printf("data[%d] = %c\n", count, data[count]);
+			printf("data[%d] = %c, data[%d] = %c\n", count - 1, data[count - 1], \
+				   count + 1, data[count + 1]);
+			printf("data[%d] = %c, data[%d] = %c\n", count - 4, data[count - 4], \
+				   count + 4, data[count + 4]);
+			ft_error();
 		}
+		k++;
 	}
-	else if (c == '\n' || c == '\0')
-		return (-1);
 	return (k);
 }
 
@@ -35,25 +44,27 @@ void	check_data(char *data)
 	int i;
 	int j;
 	int k;
+	int count;
 
-	while (data && *data)
+	count = 0;
+	while (data && data[count])
 	{
 		k = 0;
 		i = 0;
-		while (i++ < 4 && data)
+		while (i++ < 4 && data[count])
 		{
 			j = 0;
-			while (j++ < 4 && data)
+			while (j++ < 4 && data[count])
 			{
-				k = check_sign(k, *data, 1);
-				data++;
+				k = check_sign(k, data, count, i - 1, j - 1);
+				count++;
 			}
-			if (data && check_sign(k, *data, 0) != -1)
+			if (data[count] && data[count] != '\n')
 				ft_error();
-			data++;
+			count++;
 		}
-		if (data && check_sign(k, *data, 0) != -1)
+		if (data[count] && data[count] != '\n')
 			ft_error();
-		data++;
+		count++;
 	}
 }
