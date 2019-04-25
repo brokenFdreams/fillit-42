@@ -6,11 +6,29 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:41:38 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/24 16:31:45 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/25 16:11:24 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
+
+int		check_sign(int k, char c, int flag)
+{
+	if (flag == 1)
+	{
+		if (c != '#' && c != '.')
+			ft_error();
+		if (c == '#')
+		{
+			if (k == 4)
+				ft_error();
+			k++;
+		}
+	}
+	else if (c == '\n' || c == '\0')
+		return (-1);
+	return (k);
+}
 
 void	check_data(char *data)
 {
@@ -22,28 +40,19 @@ void	check_data(char *data)
 	{
 		k = 0;
 		i = 0;
-		while (i < 4 && data)
+		while (i++ < 4 && data)
 		{
 			j = 0;
-			while (j < 4 && data)
+			while (j++ < 4 && data)
 			{
-				if (*data != '#' && *data != '.')
-					ft_error();
-				if (*data == '#')
-				{
-					if (k == 4)
-						ft_error();
-					k++;
-				}
+				k = check_sign(k, *data, 1);
 				data++;
-				j++;
 			}
-			if (data && *data != '\n')
+			if (data && check_sign(k, *data, 0) != -1)
 				ft_error();
 			data++;
-			i++;
 		}
-		if (data && *data != '\n' && *data != '\0')
+		if (data && check_sign(k, *data, 0) != -1)
 			ft_error();
 		data++;
 	}
