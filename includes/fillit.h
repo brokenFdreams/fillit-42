@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:08:28 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/25 15:47:53 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/26 16:47:56 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 void	fillit(char *data);
 void	ft_error(void);
 void	check_data(char *data);
-char	*read_file(char *file);
-
+void	read_file(char *file, char *buf);
 
 #endif

@@ -6,15 +6,14 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 14:46:40 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/26 13:44:39 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/26 16:32:03 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-char	*read_file(char *file)
+void	read_file(char *file, char *buf)
 {
-	char	buf[BUFF_SIZE + 1];
 	char	c[1];
 	int		ret;
 	int		fd;
@@ -28,5 +27,4 @@ char	*read_file(char *file)
 	if (ret != 0)
 		ft_error();
 	close(fd);
-	return (ft_strdup(buf));
 }

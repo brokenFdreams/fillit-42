@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:41:38 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/26 14:57:39 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/26 16:46:05 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ void	check_sign(int *mas, char *data)
 	{
 		if (mas[2] == 4)
 			ft_error();
-		if (!((mas[1] != 0 && data[mas[3] - 1] == '#') ||
-			(mas[1] != 3 && data[mas[3] + 1] == '#') ||
-			(mas[0] != 0 && data[mas[3] - 5] == '#') ||
-			(mas[0] != 3 && data[mas[3] + 5] == '#')))
+		if (!((mas[1] != 3 && data[mas[3] + 1] == '#') ||
+			  (mas[0] != 3 && data[mas[3] + 5] == '#') ||
+			  (mas[1] != 0 && data[mas[3] - 1] == '#') ||
+			  mas[2] == 3))
 			ft_error();
 		mas[2]++;
 	}
 }
 
-/**
- * mas[0] = i;
- * mas[1] = j;
- * mas[2] = count of #;
- * mas[3] = position in data;
- * mas[4] = count of tetro;
-**/
+/*
+** mas[0] = i;
+** mas[1] = j;
+** mas[2] = count of #;
+** mas[3] = position in data;
+** mas[4] = count of tetro;
+*/
 
 void	check_data(char *data)
 {
@@ -57,12 +57,12 @@ void	check_data(char *data)
 				mas[3]++;
 				mas[1]++;
 			}
-			if (data[mas[3]] != '\0' && data[mas[3]] != '\n')
+			if (data[mas[3]] && data[mas[3]] != '\n')
 				ft_error();
 			mas[3]++;
 			mas[0]++;
 		}
-		if ((data[mas[3]] != '\0' && data[mas[3]] != '\n') || mas[2] != 4)
+		if ((data[mas[3]] && data[mas[3]] != '\n') || mas[2] != 4)
 			ft_error();
 		mas[3]++;
 	}

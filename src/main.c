@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:34:06 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/26 14:35:19 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/26 16:30:07 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		main(int argc, char **argv)
 {
-	char	*data;
+	char	data[BUFF_SIZE + 1];
 	int		fd;
 
 	if (argc != 2)
@@ -22,7 +22,7 @@ int		main(int argc, char **argv)
 		ft_putstr("usage: ./fillit target_file\n");
 		exit(0);
 	}
-	data = read_file(argv[1]);
+	read_file(argv[1], data);
 	check_data(data);
 	fillit(data);
 	return (0);
