@@ -23,7 +23,6 @@ void	check_sign(int *mas, char *data)
 			ft_error();
 		if (!((mas[1] != 3 && data[mas[3] + 1] == '#') ||
 			  (mas[0] != 3 && data[mas[3] + 5] == '#') ||
-			  (mas[1] != 0 && data[mas[3] - 1] == '#') ||
 			  mas[2] == 3))
 			ft_error();
 		mas[2]++;
