@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:41:38 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/25 17:27:30 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/26 13:33:07 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	check_data(char *data)
 				ft_error();
 			count++;
 		}
-		if (data[count] && data[count] != '\n')
+		if ((data[count] != '\0' && data[count] != '\n') || k != 4)
 			ft_error();
 		count++;
 	}

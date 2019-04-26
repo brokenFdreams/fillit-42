@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:34:06 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/25 16:31:54 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/26 13:29:45 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int		main(int argc, char **argv)
 {
 	char	*data;
 	int		fd;
-
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fillit target_file\n");
