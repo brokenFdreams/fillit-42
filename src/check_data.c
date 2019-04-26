@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:41:38 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/26 14:33:55 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/26 14:37:15 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void	check_sign(int *mas, char *data)
 	}
 }
 
-/*
+/**
  * mas[0] = i;
  * mas[1] = j;
  * mas[2] = count of #;
  * mas[3] = position in data;
  * mas[4] = count of tetro;
- */
+**/
 
 void	check_data(char *data)
 {
@@ -47,7 +47,7 @@ void	check_data(char *data)
 	while (data && data[mas[3]])
 	{
 		mas[2] = 0;
-		mas[0]  = 0;
+		mas[0] = 0;
 		while (mas[0] < 4 && data[mas[3]])
 		{
 			mas[1] = 0;
@@ -56,7 +56,7 @@ void	check_data(char *data)
 				check_sign(mas, data);
 				mas[3]++;
 				mas[1]++;
-			}	
+			}
 			if (data[mas[3]] != '\0' && data[mas[3]] != '\n')
 				ft_error();
 			mas[3]++;
