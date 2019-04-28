@@ -20,9 +20,10 @@
 
 # define BUFF_SIZE 545
 
-void	fillit(char *data);
+void	fillit(char *data, t_list **tlist);
 void	ft_error(void);
-void	check_data(char *data);
+void	check_data(char *data, t_list **tlist);
 void	read_file(char *file, char *buf);
+void	add_tetri(t_list **tlist, const int mas[5], const char *data);
 
 #endif

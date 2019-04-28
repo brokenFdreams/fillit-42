@@ -14,8 +14,8 @@
 
 int		main(int argc, char **argv)
 {
-	char	data[BUFF_SIZE + 1];
-	int		fd;
+	char			data[BUFF_SIZE + 1];
+	static t_list	*tlist = NULL;
 
 	if (argc != 2)
 	{
@@ -23,7 +23,7 @@ int		main(int argc, char **argv)
 		exit(0);
 	}
 	read_file(argv[1], data);
-	check_data(data);
-	fillit(data);
+	check_data(data, &tlist);
+	fillit(data, &tlist);
 	return (0);
 }

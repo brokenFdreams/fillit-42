@@ -13,7 +13,7 @@
 #include "../includes/fillit.h"
 #include <stdio.h>
 
-void	check_sign(int *mas, char *data)
+void	check_sign(int *mas, char *data, t_list **tlist)
 {
 	if (data[mas[3]] != '#' && data[mas[3]] != '.')
 		ft_error();
@@ -25,6 +25,7 @@ void	check_sign(int *mas, char *data)
 			  (mas[0] != 3 && data[mas[3] + 5] == '#') ||
 			  mas[2] == 3))
 			ft_error();
+		add_tetri(tlist, mas, data);
 		mas[2]++;
 	}
 }
@@ -37,7 +38,7 @@ void	check_sign(int *mas, char *data)
 ** mas[4] = count of tetro;
 */
 
-void	check_data(char *data)
+void	check_data(char *data, t_list **tlist)
 {
 	int	mas[5];
 
@@ -52,7 +53,7 @@ void	check_data(char *data)
 			mas[1] = 0;
 			while (mas[1] < 4 && data[mas[3]])
 			{
-				check_sign(mas, data);
+				check_sign(mas, data, tlist);
 				mas[3]++;
 				mas[1]++;
 			}
@@ -64,5 +65,6 @@ void	check_data(char *data)
 		if ((data[mas[3]] && data[mas[3]] != '\n') || mas[2] != 4)
 			ft_error();
 		mas[3]++;
+		mas[4]++;
 	}
 }
