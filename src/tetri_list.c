@@ -3,6 +3,21 @@
 //
 
 #include "libft.h"
+#include "fillit.h"
+
+void	ft_list_push_back(t_list **begin_list, char	sar[4])
+{
+	t_list *list;
+
+	if (list = *begin_list)
+	{
+		while (list->next)
+			list = list->next;
+		list->next = ft_lstnew(sar, sizeof(sar));
+	}
+	else
+		*begin_list = ft_lstnew(sar, sizeof(sar));
+}
 
 void	transform_tetri_array(char	sar[4])
 {
@@ -32,17 +47,13 @@ void	transform_tetri_array(char	sar[4])
 		}
 }
 
-void	add_tetri(t_list **tlist, const int mas[5], const char *data)
+void	add_tetri(t_list **tlist, int *mas, const char *data)
 {
-	t_list	*newlist;
-	t_list	*list;
 	int		i;
 	int 	j;
 	int		k;
 	char	sar[4];
 
-	if (mas[2] != 0 || !(newlist = ft_lstnew(NULL, 0)))
-		return ;
 	i = 0;
 	k = mas[3];
 	j = 0;
@@ -52,15 +63,13 @@ void	add_tetri(t_list **tlist, const int mas[5], const char *data)
 		j = 1;
 		while (data[k + j] != '#')
 			j++;
+		if (j >= 6 || j == 2)
+			ft_error();
 		sar[i++] = j;
 	}
 	transform_tetri_array(sar);
 	sar[3] = 'A' + mas[4];
-	newlist->content = sar;
-	if ((list = *tlist))
-		list->next = newlist;
-	else
-		*tlist = newlist;
+	ft_list_push_back(tlist, sar);
 }
 
 /*
