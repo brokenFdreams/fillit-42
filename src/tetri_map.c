@@ -20,16 +20,17 @@ char	*create_map(t_list **tlist, int *width)
 	size_t	size;
 
 	size  = ft_list_size(*tlist) * 4;
+	*width = ft_sqrt((int)size);
+	size += width;
 	if (!(map = ft_strnew(size)))
 		ft_error();
-	*width = ft_sqrt((int)size);
-	scale_tetri(tlist, *width - 4);
+	scale_tetri(tlist, 5, *width - 5);
 	return(map);
 }
 
 void	scale_map(char **map, int *width, int scale)
 {
-	char	temp;
+	char	*temp;
 
 	*width += scale;
 	if (!(temp = ft_strnew(*width * *width)))

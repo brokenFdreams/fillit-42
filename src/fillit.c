@@ -12,7 +12,7 @@
 
 #include "../includes/fillit.h"
 
-void	fillit(char *data, t_list **tlist)
+void	fillit(t_list **tlist)
 {
 	write(1, "-", 1);
 }

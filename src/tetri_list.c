@@ -8,70 +8,63 @@ void	ft_list_push_back(t_list **begin_list, char	sar[4])
 {
 	t_list *list;
 
-	if (list = *begin_list)
+	if ((list = *begin_list))
 	{
 		while (list->next)
 			list = list->next;
-		list->next = ft_lstnew(sar, sizeof(sar));
+		list->next = ft_lstnew(sar, 4 * sizeof(char));
 	}
 	else
-		*begin_list = ft_lstnew(sar, sizeof(sar));
+		*begin_list = ft_lstnew(sar, 4 * sizeof(char));
 }
 
-void	transform_tetri_array(char	sar[4])
+int		count_touch(const char *data, int k, int j)
 {
-	int		i;
-	char	temp;
+	int count;
 
-	i = 0;
-	while (i < 3)
-		sar[i] != 1 ? sar[i++]-- : i++;
-	i = -1;
-	while (++i < 2)
-		if (sar[i] > 1 && sar[i] < 4)
-		{
-			temp = sar[0];
-			if (i == 1 && (temp != 1 && sar[1] == 3))
-			{
-				sar[0] = sar[2];
-				sar[1] = 0 - (sar[1] + sar[2]);
-				sar[2] = 0 - temp;
-			}
-			else if (i == 0)
-			{
-				sar[0] = sar[1];
-				sar[1] = sar[2];
-				sar[2] = 0 - (sar[0] + sar[1] + temp);
-			}
-		}
+	count = 0;
+	if (j == 1 || j == 5)
+		count++;
+	else if (j + 1 == 5 && data[k + 5] == '#')
+		count++;
+	else if (j + 1 == 5 && data[k - 1] == '#')
+		count++;
+	if (k != 0 && (k + j) == 5)
+		count++;
+	return(count);
 }
 
 void	add_tetri(t_list **tlist, int *mas, const char *data)
 {
 	int		i;
 	int 	j;
-	int		k;
+	int		count;
 	char	sar[4];
 
 	i = 0;
-	k = mas[3];
-	j = 0;
+	j = 1;
+	count = 0;
 	while (i < 3)
 	{
-		k += j;
-		j = 1;
-		while (data[k + j] != '#')
+		while (data[mas[3] + j] != '#')
 			j++;
-		if (j >= 6 || j == 2)
+		if (i - 1 >= 0 && (j - sar[i - 1] == 2 || j - sar[i - 1] >= 6))
 			ft_error();
-		sar[i++] = j;
+		else if (i == 0 && (j == 2 || j >= 6))
+			ft_error();
+		if (i == 0)
+			count += count_touch(data + mas[3], 0, j);
+		else
+			count += count_touch(data + mas[3], sar[i - 1], j - sar[i - 1]);
+		sar[i++] = j++;
 	}
-	transform_tetri_array(sar);
+	if (count < 3)
+		ft_error();
 	sar[3] = 'A' + mas[4];
 	ft_list_push_back(tlist, sar);
 }
 
-void	scale_tetri(t_list **tlist, int scale)
+void	scale_tetri(t_list **tlist, int width, int scale) /* width - current before scale */
 {
 	t_list	*list;
 	char 	*sar;
@@ -84,43 +77,10 @@ void	scale_tetri(t_list **tlist, int scale)
 		i = 0;
 		while (i < 3)
 		{
-			if (sar[i] > 1)
-				sar[i] += scale;
-			else if (sar[i] < 0)
-				sar[i] -= scale;
+			if ((i == 0 && sar[i] != 1) || (i - 1 >= 0 && sar[i] - sar[i - 1] != 1))
+				sar[i] * 10 / width % 10 > 5 ? (sar[i] += sar[i] / width * scale + 1) : (sar[i] += sar[i] / width * scale);
 			i++;
 		}
 		list = list->next;
 	}
 }
-/*
-.#.. j = 4, mas[1] = 1, j > 1 && j < 5
-##..	3, 1, 4
-.#..	1, 4, -8
-....
-
-.#..	4, 3, 1
-.#..	1, -4, -4
-##..
-....
-
-.#..	3, 1, 1
-###.	1, 1, -5
-....
-....
-
-...#	2, 1, 1
-.###	1, 1, -4
-....
-....
-
-.##.	1, 2, 1
-##..	1, -3, -1
-....
-....
-
-.#..	3, 1, 3
-##..	1, 3, -7
-#...
- */
-

@@ -14,8 +14,8 @@
 
 int		main(int argc, char **argv)
 {
-	char			data[BUFF_SIZE + 1];
-	static t_list	*tlist = NULL;
+	char	data[BUFF_SIZE + 1];
+	t_list	*tlist = NULL;
 
 	if (argc != 2)
 	{
@@ -24,6 +24,7 @@ int		main(int argc, char **argv)
 	}
 	read_file(argv[1], data);
 	check_data(data, &tlist);
+	scale_tetri(&tlist, 5, 1);
 	fillit(&tlist);
 	return (0);
 }

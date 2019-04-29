@@ -22,7 +22,7 @@ void	check_sign(int *mas, char *data, t_list **tlist)
 			ft_error();
 		if (mas[2] == 0)
 			add_tetri(tlist, mas, data);
-		if (mas[3] + 1 <= BUFF_SIZE && data[mas[3] + 1] == '#')
+		/*if (mas[3] + 1 <= BUFF_SIZE && data[mas[3] + 1] == '#')
 			mas[5]++;
 		if (mas[3] - 1 >= 0 && data[mas[3] - 1] == '#')
 			mas[5]++;
@@ -33,7 +33,7 @@ void	check_sign(int *mas, char *data, t_list **tlist)
 		if (mas[5] > 8)
 			ft_error();
 		if (mas[2] == 3 && mas[5] < 6)
-			ft_error();
+			ft_error();*/
 		mas[2]++;
 	}
 }
