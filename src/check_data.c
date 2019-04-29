@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-#include <stdio.h>
 
 void	check_sign(int *mas, char *data, t_list **tlist)
 {
@@ -31,10 +30,6 @@ void	check_sign(int *mas, char *data, t_list **tlist)
 			mas[5]++;
 		if (mas[3] - 5 >= 0 && data[mas[3] - 5] == '#')
 			mas[5]++;
-		/*if (!((mas[1] != 3 && data[mas[3] + 1] == '#') ||
-			  (mas[0] != 3 && data[mas[3] + 5] == '#') ||
-			  mas[2] == 3))
-			ft_error();*/
 		if (mas[5] > 8)
 			ft_error();
 		if (mas[2] == 3 && mas[5] < 6)
