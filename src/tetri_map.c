@@ -2,7 +2,7 @@
 // Created by Abbie Calandra on 2019-04-29.
 //
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
 int	ft_list_size(t_list *begin_list)
 {
@@ -29,7 +29,7 @@ char	*create_map(t_list **tlist, int *width)
 
 void	scale_map(char **map, int *width, int scale)
 {
-	char	temp;
+	char	*temp;
 
 	*width += scale;
 	if (!(temp = ft_strnew(*width * *width)))

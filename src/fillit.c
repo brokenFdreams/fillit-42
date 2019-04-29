@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:10:25 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/29 15:48:37 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/29 16:24:44 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	change_mas(int *mas, int *yx)
 {
-	if (yx < mas[3] - 1)
+	if (yx[1] < mas[3] - 1)
 	{
 		yx[1] += 1;
-		yx[2] += 1
-		mas[1] = yx;
+		yx[2] += 1;
+		mas[1] = yx[1];
 		mas[2] = yx[2];
 	}
 	else
@@ -44,12 +44,13 @@ char	*suite(char *map, char *cnt, int *mas)
 int		is_suitable(char *map, char *cnt, int *mas)
 {
 	return (map[mas[2] + cnt[0]] == '.' && map[mas[2] + cnt[1]] == '.'
-		&& map[mas[2] + cnt[2]] == '.')
+			&& map[mas[2] + cnt[2]] == '.');
 }
 
 int		fill(char *map, t_list *tlist, int *mas)
 {
 	int yx[3];
+	int i;
 
 	while (mas[0] < mas[3])
 	{
@@ -64,7 +65,7 @@ int		fill(char *map, t_list *tlist, int *mas)
 				yx[1] = mas[1];
 				yx[2] = mas[3];
 				map = suite(map, (char*)tlist->content, mas);
-				i = fill(map, tlist, mas);
+				i = fill(map, tlist->next, mas);
 				if (i == 0)
 					return (-1);
 				if (i == -1)
@@ -112,10 +113,10 @@ void	fillit(t_list **tlist)
 	yx[1] = 0;
 	yx[2] = 0;
 	map = create_map(tlist, &mas[3]);
-	while ((i = fill(map, tlist, mas)) != 1)
+	while ((i = fill(map, *tlist, mas)) != 1)
 	{
 		if (i == 0)
-			ft_scalemap(&map, mas[3], 1);
+			scale_map(&map, &mas[3], 1);
 		if (i == -1)
 			change_mas(mas, yx);
 	}
