@@ -6,14 +6,21 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:10:25 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/29 16:24:44 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/29 17:11:55 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
+#include <stdio.h>
 
+/*
+** yx[0] = copy y;
+** yx[1] = copy x;
+** yx[2] = copy position in map;
+*/
 void	change_mas(int *mas, int *yx)
 {
+	ft_putnbr(2);
 	if (yx[1] < mas[3] - 1)
 	{
 		yx[1] += 1;
@@ -34,6 +41,7 @@ void	change_mas(int *mas, int *yx)
 
 char	*suite(char *map, char *cnt, int *mas)
 {
+	ft_putnbr(3);
 	map[mas[2]] = cnt[3];
 	map[mas[2] + cnt[0]] = cnt[3];
 	map[mas[2] + cnt[1]] = cnt[3];
@@ -52,6 +60,11 @@ int		fill(char *map, t_list *tlist, int *mas)
 	int yx[3];
 	int i;
 
+	if(!tlist)
+	{
+		ft_putstr(map);
+		return (1);
+	}
 	while (mas[0] < mas[3])
 	{
 		if (mas[1] == mas[3])
@@ -63,16 +76,15 @@ int		fill(char *map, t_list *tlist, int *mas)
 			{
 				yx[0] = mas[0];
 				yx[1] = mas[1];
-				yx[2] = mas[3];
+				yx[2] = mas[2];
 				map = suite(map, (char*)tlist->content, mas);
 				i = fill(map, tlist->next, mas);
 				if (i == 0)
 					return (-1);
-				if (i == -1)
+				else if (i == -1)
 					change_mas(mas, yx);
-				if (i == 1)
+				else if (i == 1)
 					return (1);
-				mas[3] += 1;
 			}
 			else
 			{
@@ -82,11 +94,6 @@ int		fill(char *map, t_list *tlist, int *mas)
 		}
 		mas[0]++;
 		mas[2]++;
-	}
-	if (!tlist)
-	{
-		ft_putstr(map);
-		return (1);
 	}
 	return (0);
 }
@@ -115,8 +122,19 @@ void	fillit(t_list **tlist)
 	map = create_map(tlist, &mas[3]);
 	while ((i = fill(map, *tlist, mas)) != 1)
 	{
+		ft_putstr("i = ");
+		ft_putnbr(i);
+		ft_putchar('\n');
 		if (i == 0)
+		{
 			scale_map(&map, &mas[3], 1);
+			yx[0] = 0;
+			yx[1] = 0;
+			yx[2] = 0;
+			mas[0] = 0;
+			mas[1] = 0;
+			mas[2] = 0;
+		}
 		if (i == -1)
 			change_mas(mas, yx);
 	}
