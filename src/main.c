@@ -24,7 +24,6 @@ int		main(int argc, char **argv)
 	}
 	read_file(argv[1], data);
 	check_data(data, &tlist);
-	scale_tetri(&tlist, 5, 1);
 	fillit(&tlist);
 	return (0);
 }
