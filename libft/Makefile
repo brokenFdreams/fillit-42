@@ -6,7 +6,7 @@
 #    By: fsinged <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/09 14:30:28 by fsinged           #+#    #+#              #
-#    Updated: 2019/04/09 16:03:50 by fsinged          ###   ########.fr        #
+#    Updated: 2019/04/29 16:37:39 by fsinged          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -69,7 +69,8 @@ ft_lstdelone.c \
 ft_lstdel.c \
 ft_lstadd.c \
 ft_lstiter.c \
-ft_lstmap.c
+ft_lstmap.c \
+ft_sqrt.c
 OBJ = $(SRCS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 
