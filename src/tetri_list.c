@@ -2,9 +2,9 @@
 // Created by Abbie Calandra on 2019-04-28.
 //
 
-#include "fillit.h"
+#include "../includes/fillit.h"
 
-void	ft_list_push_back(t_list **begin_list, char	sar[4])
+void	ft_list_push_back(t_list **begin_list, char	*sar)
 {
 	t_list *list;
 

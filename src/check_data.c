@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:41:38 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/26 16:46:05 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/29 15:08:34 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	check_sign(int *mas, char *data, t_list **tlist)
 }
 
 /*
-** mas[0] = i;
-** mas[1] = j;
+** mas[0] = y;
+** mas[1] = x;
 ** mas[2] = count of #;
 ** mas[3] = position in data;
 ** mas[4] = count of tetro;

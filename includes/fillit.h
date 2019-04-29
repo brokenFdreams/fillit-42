@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:08:28 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/26 16:47:56 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/29 16:23:17 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define FILLIT_H
 
 # include <fcntl.h>
-//# include <stdlib.h>
-//# include <unistd.h>
 # include "../libft/libft.h"
 
 # define BUFF_SIZE 545
@@ -26,5 +24,7 @@ void	check_data(char *data, t_list **tlist);
 void	read_file(char *file, char *buf);
 void	add_tetri(t_list **tlist, int *mas, const char *data);
 void	scale_tetri(t_list **tlist, int width, int scale);
+char	*create_map(t_list **tlist, int *width);
+void	scale_map(char **map, int *width, int scale);
 
 #endif
