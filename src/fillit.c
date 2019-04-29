@@ -127,6 +127,7 @@ void	fillit(t_list **tlist)
 		ft_putchar('\n');
 		if (i == 0)
 		{
+			scale_tetri(tlist, mas[3], 1);
 			scale_map(&map, &mas[3], 1);
 			yx[0] = 0;
 			yx[1] = 0;
