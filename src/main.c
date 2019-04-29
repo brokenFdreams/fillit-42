@@ -24,6 +24,6 @@ int		main(int argc, char **argv)
 	}
 	read_file(argv[1], data);
 	check_data(data, &tlist);
-	fillit(data, &tlist);
+	fillit(&tlist);
 	return (0);
 }

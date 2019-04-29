@@ -2,7 +2,6 @@
 // Created by Abbie Calandra on 2019-04-28.
 //
 
-#include "libft.h"
 #include "fillit.h"
 
 void	ft_list_push_back(t_list **begin_list, char	sar[4])
@@ -72,6 +71,28 @@ void	add_tetri(t_list **tlist, int *mas, const char *data)
 	ft_list_push_back(tlist, sar);
 }
 
+void	scale_tetri(t_list **tlist, int scale)
+{
+	t_list	*list;
+	char 	*sar;
+	int		i;
+
+	list = *tlist;
+	while (list)
+	{
+		sar = list->content;
+		i = 0;
+		while (i < 3)
+		{
+			if (sar[i] > 1)
+				sar[i] += scale;
+			else if (sar[i] < 0)
+				sar[i] -= scale;
+			i++;
+		}
+		list = list->next;
+	}
+}
 /*
 .#.. j = 4, mas[1] = 1, j > 1 && j < 5
 ##..	3, 1, 4
