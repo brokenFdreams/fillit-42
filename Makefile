@@ -6,7 +6,7 @@
 #    By: fsinged <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/29 12:34:13 by fsinged           #+#    #+#              #
-#    Updated: 2019/04/30 12:51:31 by fsinged          ###   ########.fr        #
+#    Updated: 2019/04/30 13:08:13 by fsinged          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,15 +18,24 @@ $(PATH)ft_error.c \
 $(PATH)read_file.c \
 $(PATH)tetri_list.c \
 $(PATH)tetri_map.c \
-./libft/libft.a
-HEADER = ./icludes/fillit.h
+$(PATH)ft_putstr.c \
+$(PATH)ft_putchar.c \
+$(PATH)ft_memmove.c \
+$(PATH)ft_memset.c \
+$(PATH)ft_bzero.c \
+$(PATH)ft_lstnew.c \
+$(PATH)ft_sqrt.c \
+$(PATH)ft_strdel.c \
+$(PATH)ft_strlen.c \
+$(PATH)ft_strsub.c \
+$(PATH)ft_strnew.c \
+$(PATH)ft_strdup.c
 FLAGS = -Wall -Wextra -Werror
 NAME = fillit
 
 all:$(NAME)
 
 $(NAME):
-	make -C ./libft
 	@gcc $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:
