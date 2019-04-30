@@ -6,7 +6,7 @@
 #    By: fsinged <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/29 12:34:13 by fsinged           #+#    #+#              #
-#    Updated: 2019/04/30 13:14:40 by fsinged          ###   ########.fr        #
+#    Updated: 2019/04/30 14:59:51 by fsinged          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -32,13 +32,13 @@ NAME = fillit
 all:$(NAME)
 
 $(NAME):
-	gcc $(FLAGS) -c $(SRCS)
-	gcc $(FLAGS) $(OBJ) -o $(NAME)
+	@gcc $(FLAGS) -c $(SRCS)
+	@gcc $(FLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean:clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re:fclean all
