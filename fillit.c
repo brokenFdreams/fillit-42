@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:10:25 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/30 15:22:16 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/30 16:02:09 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@ char	*suite(char *map, char *cnt, int *mas)
 	map[mas[0] + cnt[0]] = cnt[3];
 	map[mas[0] + cnt[1]] = cnt[3];
 	map[mas[0] + cnt[2]] = cnt[3];
+	return (map);
+}
+
+char	*reset_map(char *map, char *cnt, int *mas)
+{
+	map[mas[0]] = '.';
+	map[mas[0] + cnt[0]] = '.';
+	map[mas[0] + cnt[1]] = '.';
+	map[mas[0] + cnt[2]] = '.';
 	return (map);
 }
 
@@ -46,10 +55,10 @@ int		fill(char *map, t_list *tlist, int *mas)
 			map = suite(map, (char*)tlist->content, mas);
 			mas[0] = 0;
 			i = fill(map, tlist->next, mas);
+			mas[0] = pos;
+			map = reset_map(map, (char*)tlist->content, mas);
 			if (i == 0)
 				return (-1);
-			else if (i == -1)
-				mas[0] = pos;
 			else if (i == 1)
 				return (1);
 		}
