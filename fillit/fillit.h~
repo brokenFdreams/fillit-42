@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:08:28 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/30 13:10:36 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/29 16:23:17 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FILLIT_H
 
 # include <fcntl.h>
-# include "libft.h"
+# include "../libft/libft.h"
 
 # define BUFF_SIZE 545
 
