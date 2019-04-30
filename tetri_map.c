@@ -14,7 +14,7 @@ int	ft_list_size(t_list *begin_list)
 	return (0);
 }
 
-char	*fill_map(char *map, int width)		/*width without \n */
+char	*fill_map(char *map, int width)
 {
 	int		i;
 	char	*p;
@@ -47,7 +47,7 @@ char	*create_map(t_list **tlist, int *width)
 	return(map);
 }
 
-void	scale_map(char **map, int *width, int scale)	/* width without \n */
+void	scale_map(char **map, int *width, int scale)
 {
 	char	*temp;
 
