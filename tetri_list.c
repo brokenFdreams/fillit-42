@@ -63,6 +63,13 @@ void	add_tetri(t_list **tlist, int *mas, const char *data)
 	ft_list_push_back(tlist, sar);
 }
 
+int		min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
 void	scale_tetri(t_list **tlist, int width, int scale)
 {
 	t_list	*list;
