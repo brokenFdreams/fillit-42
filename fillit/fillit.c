@@ -6,12 +6,11 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:10:25 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/29 17:11:55 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/30 12:49:38 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
-#include <stdio.h>
+#include "fillit.h"
 
 /*
 ** yx[0] = copy y;
@@ -20,7 +19,6 @@
 */
 void	change_mas(int *mas, int *yx)
 {
-	/*ft_putnbr(2);*/
 	if (yx[1] < mas[3] - 1)
 	{
 		yx[1] += 1;
@@ -41,7 +39,6 @@ void	change_mas(int *mas, int *yx)
 
 char	*suite(char *map, char *cnt, int *mas)
 {
-	/*ft_putnbr(3);*/
 	map[mas[2]] = cnt[3];
 	map[mas[2] + cnt[0]] = cnt[3];
 	map[mas[2] + cnt[1]] = cnt[3];
@@ -105,6 +102,10 @@ int		fill(char *map, t_list *tlist, int *mas)
 ** mas[3] = width of map;
 */
 
+/*
+** width - mas[3] - without \n
+*/
+
 void	fillit(t_list **tlist)
 {
 	char	*map;
@@ -119,12 +120,8 @@ void	fillit(t_list **tlist)
 	yx[0] = 0;
 	yx[1] = 0;
 	yx[2] = 0;
-	map = create_map(tlist, &mas[3]);			/* width - mas[3] - without \n */
+	map = create_map(tlist, &mas[3]);
 	while ((i = fill(map, *tlist, mas)) != 1)
-	{
-		/*ft_putstr("i = ");
-		ft_putnbr(i);
-		ft_putchar('\n');*/
 		if (i == 0)
 		{
 			scale_tetri(tlist, mas[3], 1);
@@ -136,7 +133,6 @@ void	fillit(t_list **tlist)
 			mas[1] = 0;
 			mas[2] = 0;
 		}
-		if (i == -1)
+		else if (i == -1)
 			change_mas(mas, yx);
-	}
 }
