@@ -52,7 +52,7 @@ void	scale_map(char **map, int *width, int scale)	/* width without \n */
 	char	*temp;
 
 	*width += scale;
-	if (!(temp = ft_strnew(*width * *width + *width)))
+	if (!(temp = (char*)malloc(*width * *width + *width + 1)))
 		ft_error();
 	temp = fill_map(temp, *width);
 	ft_strdel(map);

@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 11:58:17 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/29 16:35:43 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/30 13:26:29 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,12 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-void				ft_bzero(void *s, size_t n);
-size_t				ft_strlen(const char *s);
-char				*ft_strdup(const char *s1);
-char				*ft_strnew(size_t size);
-char				*ft_strsub(char const *s, unsigned int start, size_t len);
+void				*ft_memset(void *b, int c, size_t len);
+void				*ft_memmove(void *dst, const void *src, size_t len);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
-void				ft_putnbr(int n);
+void				ft_strdel(char **as);
+t_list				*ft_lstnew(void const *content, size_t content_size);
+int					ft_sqrt(int nb);
 
 #endif
