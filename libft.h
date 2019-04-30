@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 11:58:17 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/30 13:24:53 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/30 13:26:29 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ char				*ft_strnew(size_t size);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
+void				ft_strdel(char **as);
 
 #endif
