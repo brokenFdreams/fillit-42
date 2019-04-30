@@ -14,7 +14,7 @@ int	ft_list_size(t_list *begin_list)
 	return (0);
 }
 
-char	*fill_map(char *map, int width)
+char	*fill_map(char *map, int width)		/*width without \n */
 {
 	int		i;
 	char	*p;
@@ -43,11 +43,11 @@ char	*create_map(t_list **tlist, int *width)
 	if (!(map = (char*)malloc(size + 1)))
 		ft_error();
 	map = fill_map(map, *width);
-	scale_tetri(tlist, 5, *width - 5);
+	scale_tetri(tlist, 4, *width - 4);
 	return(map);
 }
 
-void	scale_map(char **map, int *width, int scale)
+void	scale_map(char **map, int *width, int scale)	/* width without \n */
 {
 	char	*temp;
 

@@ -22,18 +22,6 @@ void	check_sign(int *mas, char *data, t_list **tlist)
 			ft_error();
 		if (mas[2] == 0)
 			add_tetri(tlist, mas, data);
-		/*if (mas[3] + 1 <= BUFF_SIZE && data[mas[3] + 1] == '#')
-			mas[5]++;
-		if (mas[3] - 1 >= 0 && data[mas[3] - 1] == '#')
-			mas[5]++;
-		if (mas[3] + 5 <= BUFF_SIZE && data[mas[3] + 5] == '#')
-			mas[5]++;
-		if (mas[3] - 5 >= 0 && data[mas[3] - 5] == '#')
-			mas[5]++;
-		if (mas[5] > 8)
-			ft_error();
-		if (mas[2] == 3 && mas[5] < 6)
-			ft_error();*/
 		mas[2]++;
 	}
 }
@@ -44,18 +32,16 @@ void	check_sign(int *mas, char *data, t_list **tlist)
 ** mas[2] = count of #;
 ** mas[3] = position in data;
 ** mas[4] = count of tetro;
-** mas[5] = count of touch;
 */
 
 void	check_data(char *data, t_list **tlist)
 {
-	int	mas[6];
+	int	mas[5];
 
 	mas[3] = 0;
 	mas[4] = 0;
 	while (data && data[mas[3]])
 	{
-		mas[5] = 0;
 		mas[2] = 0;
 		mas[0] = 0;
 		while (mas[0] < 4 && data[mas[3]])

@@ -20,7 +20,7 @@
 */
 void	change_mas(int *mas, int *yx)
 {
-	ft_putnbr(2);
+	/*ft_putnbr(2);*/
 	if (yx[1] < mas[3] - 1)
 	{
 		yx[1] += 1;
@@ -41,7 +41,7 @@ void	change_mas(int *mas, int *yx)
 
 char	*suite(char *map, char *cnt, int *mas)
 {
-	ft_putnbr(3);
+	/*ft_putnbr(3);*/
 	map[mas[2]] = cnt[3];
 	map[mas[2] + cnt[0]] = cnt[3];
 	map[mas[2] + cnt[1]] = cnt[3];
@@ -119,12 +119,12 @@ void	fillit(t_list **tlist)
 	yx[0] = 0;
 	yx[1] = 0;
 	yx[2] = 0;
-	map = create_map(tlist, &mas[3]);
+	map = create_map(tlist, &mas[3]);			/* width - mas[3] - without \n */
 	while ((i = fill(map, *tlist, mas)) != 1)
 	{
-		ft_putstr("i = ");
+		/*ft_putstr("i = ");
 		ft_putnbr(i);
-		ft_putchar('\n');
+		ft_putchar('\n');*/
 		if (i == 0)
 		{
 			scale_tetri(tlist, mas[3], 1);

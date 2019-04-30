@@ -58,18 +58,18 @@ void	add_tetri(t_list **tlist, int *mas, const char *data)
 			count += count_touch(data + mas[3], sar[i - 1], j - sar[i - 1]);
 		sar[i++] = j++;
 	}
-	if (count < 3)
-		ft_error();
+	count < 3 ? ft_error() : NULL;
 	sar[3] = 'A' + mas[4];
 	ft_list_push_back(tlist, sar);
 }
 
-void	scale_tetri(t_list **tlist, int width, int scale) /* width - current before scale */
+void	scale_tetri(t_list **tlist, int width, int scale)
 {
 	t_list	*list;
 	char 	*sar;
 	int		i;
 
+	width++;
 	list = *tlist;
 	while (list)
 	{
@@ -77,8 +77,14 @@ void	scale_tetri(t_list **tlist, int width, int scale) /* width - current before
 		i = 0;
 		while (i < 3)
 		{
-			if ((i == 0 && sar[i] != 1) || (i - 1 >= 0 && sar[i] - sar[i - 1] != 1))
-				sar[i] * 10 / width % 10 > 5 ? (sar[i] += sar[i] / width * scale + 1) : (sar[i] += sar[i] / width * scale);
+			if ((i == 0 && sar[i] != 1)
+			|| (i - 1 >= 0 && sar[i] - sar[i - 1] != 1))
+			{
+				if (sar[i] * 10 / width % 10 > 5)
+					(sar[i] += sar[i] / width * scale + scale);
+				else
+					(sar[i] += sar[i] / width * scale);
+			}
 			i++;
 		}
 		list = list->next;
