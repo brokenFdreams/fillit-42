@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:10:25 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/30 15:02:36 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/30 15:22:16 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,11 @@ int		fill(char *map, t_list *tlist, int *mas)
 			if (i == 0)
 				return (-1);
 			else if (i == -1)
-				mas[0] = pos + 1;
+				mas[0] = pos;
 			else if (i == 1)
 				return (1);
 		}
-		else
-			mas[0]++;
+		mas[0]++;
 	}
 	return (0);
 }
@@ -81,7 +80,6 @@ void	fillit(t_list **tlist)
 			scale_tetri(tlist, mas[1], 1);
 			scale_map(&map, &mas[1], 1);
 			mas[0] = 0;
-			mas[1] = 0;
 			pos = 0;
 		}
 		else if (i == -1)
