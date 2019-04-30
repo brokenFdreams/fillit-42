@@ -4,7 +4,7 @@
 
 #include "fillit.h"
 
-int	ft_list_size(t_list *begin_list)
+int		ft_list_size(t_list *begin_list)
 {
 	t_list *list;
 
@@ -37,14 +37,14 @@ char	*create_map(t_list **tlist, int *width)
 	char	*map;
 	size_t	size;
 
-	size  = ft_list_size(*tlist) * 4;
+	size = ft_list_size(*tlist) * 4;
 	*width = ft_sqrt((int)size);
 	size = *width * *width + *width;
 	if (!(map = (char*)malloc(size + 1)))
 		ft_error();
 	map = fill_map(map, *width);
 	scale_tetri(tlist, 4, *width - 4);
-	return(map);
+	return (map);
 }
 
 void	scale_map(char **map, int *width, int scale)

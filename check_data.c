@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 15:41:38 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/30 12:49:22 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/04/30 16:38:12 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,19 @@ void	check_sign(int *mas, char *data, t_list **tlist)
 ** mas[4] = count of tetro;
 */
 
+void	i_need_place(int *mas, char *data, t_list **tlist)
+{
+	check_sign(mas, data, tlist);
+	mas[3]++;
+	mas[1]++;
+}
+
 void	check_data(char *data, t_list **tlist)
 {
 	int	mas[5];
 
 	mas[3] = 0;
 	mas[4] = 0;
-	if (!*data)
-		ft_error();
 	while (data[mas[3]])
 	{
 		mas[2] = 0;
@@ -50,11 +55,7 @@ void	check_data(char *data, t_list **tlist)
 		{
 			mas[1] = 0;
 			while (mas[1] < 4 && data[mas[3]])
-			{
-				check_sign(mas, data, tlist);
-				mas[3]++;
-				mas[1]++;
-			}
+				i_need_place(mas, data, tlist);
 			if (data[mas[3]] != '\n')
 				ft_error();
 			mas[3]++;
