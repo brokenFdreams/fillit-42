@@ -40,7 +40,9 @@ void	check_data(char *data, t_list **tlist)
 
 	mas[3] = 0;
 	mas[4] = 0;
-	while (data && data[mas[3]])
+	if (!*data)
+		ft_error();
+	while (data[mas[3]])
 	{
 		mas[2] = 0;
 		mas[0] = 0;
@@ -53,12 +55,13 @@ void	check_data(char *data, t_list **tlist)
 				mas[3]++;
 				mas[1]++;
 			}
-			if (data[mas[3]] && data[mas[3]] != '\n')
+			if (data[mas[3]] != '\n')
 				ft_error();
 			mas[3]++;
 			mas[0]++;
 		}
-		if ((data[mas[3]] && data[mas[3]] != '\n') || mas[2] != 4)
+		if ((data[mas[3]] && data[mas[3]] != '\n') || mas[2] != 4
+			|| (!data[mas[3] + 1] && data[mas[3]]))
 			ft_error();
 		mas[3]++;
 		mas[4]++;
