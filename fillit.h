@@ -26,5 +26,6 @@ void	add_tetri(t_list **tlist, int *mas, const char *data);
 void	scale_tetri(t_list **tlist, int width, int scale);
 char	*create_map(t_list **tlist, int *width);
 void	scale_map(char **map, int *width, int scale);
+void 	*del(void *content, size_t size);
 
 #endif

@@ -1,8 +1,23 @@
-//
-// Created by Abbie Calandra on 2019-04-28.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tetri_list.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acalandr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/02 14:30:10 by acalandr          #+#    #+#             */
+/*   Updated: 2019/05/02 14:30:21 by acalandr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fillit.h"
+
+void *del(void *content, size_t size)
+{
+	(void)size;
+	if (content)
+		free(content);
+}
 
 void	ft_list_push_back(t_list **begin_list, char	*sar)
 {

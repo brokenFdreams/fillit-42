@@ -44,6 +44,7 @@ int		fill(char *map, t_list *tlist, int *mas)
 	if (!tlist)
 	{
 		ft_putstr(map);
+		ft_strdel(&map);
 		return (1);
 	}
 	while (map[mas[0]])
