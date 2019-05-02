@@ -12,14 +12,14 @@
 
 #include "fillit.h"
 
-void *del(void *content, size_t size)
+void	*del(void *content, size_t size)
 {
 	(void)size;
 	if (content)
 		free(content);
 }
 
-void	ft_list_push_back(t_list **begin_list, char	*sar)
+void	ft_list_push_back(t_list **begin_list, char *sar)
 {
 	t_list *list;
 
@@ -46,13 +46,13 @@ int		count_touch(const char *data, int k, int j)
 		count++;
 	if (k != 0 && (k + j) == 5)
 		count++;
-	return(count);
+	return (count);
 }
 
 void	add_tetri(t_list **tlist, int *mas, const char *data)
 {
 	int		i;
-	int 	j;
+	int		j;
 	int		count;
 	char	sar[4];
 
@@ -81,7 +81,7 @@ void	add_tetri(t_list **tlist, int *mas, const char *data)
 void	scale_tetri(t_list **tlist, int width, int scale)
 {
 	t_list	*list;
-	char 	*sar;
+	char	*sar;
 	int		i;
 	int		old;
 
@@ -89,14 +89,11 @@ void	scale_tetri(t_list **tlist, int width, int scale)
 	list = *tlist;
 	while (list && (sar = list->content))
 	{
-		i = 0;
-		while (i < 3)
-		{
-			if ((i == 0 && sar[i] != 1)
-			|| (i - 1 >= 0 && sar[i] - sar[i - 1] != 1)
-			|| (i - 1 >= 0 && sar[i - 1] != old))
+		i = -1;
+		while (++i < 3)
+			if (((i == 0 && sar[i] != 1) || (i - 1 >= 0 && sar[i - 1] != old)
+			|| (i - 1 >= 0 && sar[i] - sar[i - 1] != 1)) && (old = sar[i]))
 			{
-				old = sar[i];
 				if (sar[i] * 10 / width % 10 > 5)
 					(sar[i] += sar[i] / width * scale + scale);
 				else
@@ -104,8 +101,6 @@ void	scale_tetri(t_list **tlist, int width, int scale)
 			}
 			else
 				old = sar[i];
-			i++;
-		}
 		list = list->next;
 	}
 }
