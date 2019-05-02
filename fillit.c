@@ -39,7 +39,6 @@ int		is_suitable(char *map, char *cnt, int *mas)
 int		fill(char *map, t_list *tlist, int *mas)
 {
 	int pos;
-	int i;
 
 	if (!tlist)
 	{
@@ -55,11 +54,10 @@ int		fill(char *map, t_list *tlist, int *mas)
 			pos = mas[0];
 			map = suite(map, (char*)tlist->content, mas);
 			mas[0] = 0;
-			i = fill(map, tlist->next, mas);
+			if (fill(map, tlist->next, mas) == 1)
+				return (1);
 			mas[0] = pos;
 			map = reset_map(map, (char*)tlist->content, mas);
-			if (i == 1)
-				return (1);
 		}
 		mas[0]++;
 	}
