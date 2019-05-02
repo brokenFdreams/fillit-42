@@ -72,19 +72,15 @@ int		fill(char *map, t_list *tlist, int *mas)
 void	fillit(t_list **tlist)
 {
 	char	*map;
-	int		i;
 	int		mas[2];
-	int		pos;
 
 	mas[0] = 0;
 	mas[1] = 0;
-	pos = 0;
 	map = create_map(tlist, &mas[1]);
-	while ((i = fill(map, *tlist, mas)) != 1)
+	while (fill(map, *tlist, mas) != 1)
 	{
 		scale_tetri(tlist, mas[1], 1);
 		scale_map(&map, &mas[1], 1);
 		mas[0] = 0;
-		pos = 0;
 	}
 }
