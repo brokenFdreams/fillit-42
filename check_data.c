@@ -18,10 +18,10 @@ void	check_sign(int *mas, char *data, t_list **tlist)
 		ft_error();
 	if (data[mas[3]] == '#')
 	{
-		if (mas[2] == 4)
-			ft_error();
 		if (mas[2] == 0)
 			add_tetri(tlist, mas, data);
+		else if (mas[2] == 4)
+			ft_error();
 		mas[2]++;
 	}
 }
