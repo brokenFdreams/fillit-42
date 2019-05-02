@@ -58,13 +58,15 @@ void	check_data(char *data, t_list **tlist)
 				i_need_place(mas, data, tlist);
 			if (data[mas[3]] != '\n')
 				ft_error();
-			mas[3]++;
+			if (data[mas[3]])
+				mas[3]++;
 			mas[0]++;
 		}
 		if ((data[mas[3]] && data[mas[3]] != '\n') || mas[2] != 4
 			|| (!data[mas[3] + 1] && data[mas[3]]))
 			ft_error();
-		mas[3]++;
+		if (data[mas[3]])
+			mas[3]++;
 		mas[4]++;
 	}
 }

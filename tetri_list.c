@@ -46,7 +46,7 @@ void	add_tetri(t_list **tlist, int *mas, const char *data)
 	count = 0;
 	while (i < 3)
 	{
-		while (data[mas[3] + j] != '#')
+		while (data[mas[3] + j] != '#' && data[mas[3] + j])
 			j++;
 		if (i - 1 >= 0 && (j - sar[i - 1] == 2 || j - sar[i - 1] >= 6))
 			ft_error();

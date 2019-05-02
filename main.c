@@ -36,7 +36,7 @@ int		main(int argc, char **argv)
 /*				show diff			*/
 	clock_t endt = clock();
 	double diff = ((double)endt - (double)strt) / CLOCKS_PER_SEC;
-	printf("fillit: %f\n", diff);
+	printf("fillit run: %f sec\n", diff);
 /*				end clock			*/
 	return (0);
 }
