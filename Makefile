@@ -22,9 +22,11 @@ $(PATH)ft_putstr.c \
 $(PATH)ft_putchar.c \
 $(PATH)ft_memmove.c \
 $(PATH)ft_memset.c \
+$(PATH)ft_strdel.c \
 $(PATH)ft_lstnew.c \
-$(PATH)ft_sqrt.c \
-$(PATH)ft_strdel.c
+$(PATH)ft_lstdel.c \
+$(PATH)ft_lstdelone.c \
+$(PATH)ft_sqrt.c
 OBJ = $(SRCS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 NAME = fillit

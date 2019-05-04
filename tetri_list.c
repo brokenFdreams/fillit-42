@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-void	*del(void *content, size_t size)
+void	del(void *content, size_t size)
 {
 	(void)size;
 	if (content)
