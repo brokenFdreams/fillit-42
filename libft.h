@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 11:58:17 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/30 13:26:29 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/05/06 16:28:04 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdel(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 int					ft_sqrt(int nb);
+int					min(int a, int b);
 
 #endif

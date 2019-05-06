@@ -6,7 +6,7 @@
 /*   By: acalandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 14:30:10 by acalandr          #+#    #+#             */
-/*   Updated: 2019/05/02 14:30:21 by acalandr         ###   ########.fr       */
+/*   Updated: 2019/05/06 16:28:22 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,6 @@ void	add_tetri(t_list **tlist, int *mas, const char *data)
 	count < 3 ? ft_error() : NULL;
 	sar[3] = 'A' + mas[4];
 	ft_list_push_back(tlist, sar);
-}
-
-int		min(int a, int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
 }
 
 void	scale_tetri(t_list **tlist, int width, int scale)
