@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: acalandr <acalandr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:10:25 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/30 16:40:31 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/05/05 19:43:44 by acalandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,17 @@ char	*reset_map(char *map, char *cnt, int *mas)
 	map[mas[0] + cnt[0]] = '.';
 	map[mas[0] + cnt[1]] = '.';
 	map[mas[0] + cnt[2]] = '.';
+
+	/* add here reset # by steps from "isol" */
 	return (map);
 }
 
-int 	is_isolate(char *map, int *mas, int mov[2])
+int 	is_isolate(char *map, int *mas, int mov[2], char *isol)
 {
 	int			count;
 	int 		steps[4];
 	int 		moves[2];
+	int			*isol;          /* <- for steps of isolated */
 	int			i;
 	int 		c;
 
@@ -51,50 +54,52 @@ int 	is_isolate(char *map, int *mas, int mov[2])
 		{
 			moves[0] = steps[i] - mas[0];
 			moves[1] = mov[0];
-			if (++count > 3 || (c = is_isolate(map, mas, moves)) == -1 || c + count > 3)
+			if (++count > 3 || (c = is_isolate(map, mas, moves, isol++)) == -1 || c + count > 3)		/* <- count > 3 - for miss first box wich is tetriminos */
 				return (-1);
 		}
 		i++;
 	}
-	return(count + c);
+	if(map[mas[0] + mov[0]] == '.')
+	{
+			/* isol =                 <- write steps here */
+		map[mas[0] + mov[0]] = '#';		/* <- write # for isolated -> then reset by steps from "isol" */
+	}
+	return(count + c - 1);
 }
 
 int		is_suitable(char *map, char *cnt, int *mas)
 {
-	int i;
-	int mov[2];
+	int 	mov[2];
+	char	isol[15];
+	int		i;
+	int		c;
 
+	ft_bzero(isol);							/* add in librari */
 	if (map[mas[0] + cnt[0]] == '.' && map[mas[0] + cnt[1]] == '.'
 	&& map[mas[0] + cnt[2]] == '.')
 	{
 		suite(map, cnt, mas);
-		i = 0;
 		mov[0] = 0;
 		mov[1] = 0;
+		i = 0;
 		while(i < 4)
 		{
-			is_isolate(map, mas, mov);
+			if ((c = is_isolate(map, mas, mov, isol)) != -1)
+				mas[2] += c;
 			mov[0] = mov[1];
 			if (i != 3)
 				mov[1] = cnt[i];
 			i++;
 		}
+		if (mas[1] * mas[1] - mas[2] - (cnt[3] - 65) < (mas[3] - (cnt[3] - 65)) * 4)
+		{
+			
+			return(0);
+		}
 		return(1);
-	}
+	}	
 	return (0);
 }
-
-/*		mas[0] step pstep
-** .#..	0	   0	0
-** .#..	0 	   5	0
-** .#..	0 	   10	5
-*/
-
-/*		mas[0] step pstep
-** .#..	0	   0	0
-** .#..	0 	   5	0
-** ##..	0 	   10	5
-*/
 
 int		fill(char *map, t_list *tlist, int *mas)
 {
@@ -109,21 +114,19 @@ int		fill(char *map, t_list *tlist, int *mas)
 		return (1);
 	}
 	cont = (char*)tlist->content;
-	while (map[mas[0]])	/* cut */
+	while (map[mas[0]])
 	{
 		if (map[mas[0]] == '.' && is_suitable(map, (char*)tlist->content, mas))
 		{
 			pos = mas[0];
 			isol = mas[2];
 			mas[0] = 0;
-			if (fill(map, tlist->next, mas) == 1) /* cut */
+			if (fill(map, tlist->next, mas) == 1)
 				return (1);
 			mas[0] = pos;
 			mas[2] = isol;
 			map = reset_map(map, (char*)tlist->content, mas);
 		}
-		if (mas[1] * mas[1] - mas[2] - (cont[3] - 64) * 4 < (ft_list_size(tlist) - 1) * 4)
-			return(0);
 		mas[0]++;
 	}
 	return (0);
@@ -133,6 +136,7 @@ int		fill(char *map, t_list *tlist, int *mas)
 ** mas[0] = position in map;
 ** mas[1] = width of map without \n;
 ** mas[2] = isolated
+** mas[3] = list length - count of tetriminos
 */
 
 void	fillit(t_list **tlist)
