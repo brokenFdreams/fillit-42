@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acalandr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: acalandr <acalandr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/02 16:35:38 by acalandr          #+#    #+#             */
-/*   Updated: 2019/04/29 16:35:23 by fsinged          ###   ########.fr       */
+/*   Created: 2019/04/05 18:41:34 by acalandr          #+#    #+#             */
+/*   Updated: 2019/04/18 18:29:34 by acalandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
-{
-	int i;
+#include <stdlib.h>
+#include "libft.h"
 
-	i = 0;
-	while (i * i < nb)
-		i++;
-	return (i);
+char	*ft_strnew(size_t size)
+{
+	char	*p;
+	size_t	buffer;
+
+	buffer = size + 1;
+	if (size == buffer - 1)
+		if ((p = (char*)malloc(sizeof(char) * buffer)))
+			return (ft_memset(p, '\0', buffer));
+	return (NULL);
 }

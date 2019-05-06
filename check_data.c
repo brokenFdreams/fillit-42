@@ -18,10 +18,10 @@ void	check_sign(int *mas, char *data, t_list **tlist)
 		ft_error();
 	if (data[mas[3]] == '#')
 	{
-		if (mas[2] == 4)
-			ft_error();
 		if (mas[2] == 0)
 			add_tetri(tlist, mas, data);
+		else if (mas[2] == 4)
+			ft_error();
 		mas[2]++;
 	}
 }
@@ -36,9 +36,12 @@ void	check_sign(int *mas, char *data, t_list **tlist)
 
 void	i_need_place(int *mas, char *data, t_list **tlist)
 {
-	check_sign(mas, data, tlist);
-	mas[3]++;
-	mas[1]++;
+	while (mas[1] < 4 && data[mas[3]])
+	{
+		check_sign(mas, data, tlist);
+		mas[3]++;
+		mas[1]++;
+	}
 }
 
 void	check_data(char *data, t_list **tlist)
@@ -54,17 +57,18 @@ void	check_data(char *data, t_list **tlist)
 		while (mas[0] < 4 && data[mas[3]])
 		{
 			mas[1] = 0;
-			while (mas[1] < 4 && data[mas[3]])
-				i_need_place(mas, data, tlist);
+			i_need_place(mas, data, tlist);
 			if (data[mas[3]] != '\n')
 				ft_error();
-			mas[3]++;
+			if (data[mas[3]])
+				mas[3]++;
 			mas[0]++;
 		}
 		if ((data[mas[3]] && data[mas[3]] != '\n') || mas[2] != 4
 			|| (!data[mas[3] + 1] && data[mas[3]]))
 			ft_error();
-		mas[3]++;
+		if (data[mas[3]])
+			mas[3]++;
 		mas[4]++;
 	}
 }

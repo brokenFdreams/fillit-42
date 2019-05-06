@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <time.h>
+#include <stdio.h>
 
 int		main(int argc, char **argv)
 {
@@ -27,6 +29,15 @@ int		main(int argc, char **argv)
 	if (!data[0])
 		ft_error();
 	check_data(data, &tlist);
+/*				start time			*/
+	clock_t strt = clock();
+/*									*/
 	fillit(&tlist);
+/*				show diff			*/
+	clock_t endt = clock();
+	double diff = ((double)endt - (double)strt) / CLOCKS_PER_SEC;
+	printf("fillit run: %f sec\n", diff);
+/*				end clock			*/
+	ft_lstdel(&tlist, del);
 	return (0);
 }
