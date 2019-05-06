@@ -6,13 +6,11 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 12:34:06 by fsinged           #+#    #+#             */
-/*   Updated: 2019/05/06 16:22:20 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/05/06 16:37:30 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <time.h>
-#include <stdio.h>
 
 int		main(int argc, char **argv)
 {
