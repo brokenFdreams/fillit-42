@@ -75,23 +75,27 @@ void	scale_tetri(t_list **tlist, int width, int scale)
 	t_list	*list;
 	char 	*sar;
 	int		i;
+	int		old;
 
 	width++;
 	list = *tlist;
-	while (list)
+	while (list && (sar = list->content))
 	{
-		sar = list->content;
 		i = 0;
 		while (i < 3)
 		{
 			if ((i == 0 && sar[i] != 1)
-			|| (i - 1 >= 0 && sar[i] - sar[i - 1] != 1))
+			|| (i - 1 >= 0 && sar[i] - sar[i - 1] != 1)
+			|| (i - 1 >= 0 && sar[i - 1] != old))
 			{
+				old = sar[i];
 				if (sar[i] * 10 / width % 10 > 5)
 					(sar[i] += sar[i] / width * scale + scale);
 				else
 					(sar[i] += sar[i] / width * scale);
 			}
+			else
+				old = sar[i];
 			i++;
 		}
 		list = list->next;
