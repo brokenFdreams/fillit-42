@@ -6,7 +6,7 @@
 /*   By: acalandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 14:30:10 by acalandr          #+#    #+#             */
-/*   Updated: 2019/05/07 16:05:19 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/05/07 16:30:47 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	add_tetri(t_list **tlist, int *mas, const char *data)
 
 void	scale_tetri(t_list **tlist, int scale)
 {
-	t_list *list;
+	t_list	*list;
 	char	old[3];
 	int		l;
 	char	*cnt;
@@ -98,7 +98,7 @@ void	scale_tetri(t_list **tlist, int scale)
 		if (old[1] - old[0] != 1)
 			l += scale;
 		cnt[1] += l;
-		if (old[2] - old [1] != 1)
+		if (old[2] - old[1] != 1)
 			l += scale;
 		cnt[2] += l;
 		list = list->next;

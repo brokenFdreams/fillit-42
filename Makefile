@@ -6,7 +6,7 @@
 #    By: fsinged <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/29 12:34:13 by fsinged           #+#    #+#              #
-#    Updated: 2019/04/30 14:59:51 by fsinged          ###   ########.fr        #
+#    Updated: 2019/05/07 16:31:59 by fsinged          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,7 +23,7 @@ $(PATH)ft_putchar.c \
 $(PATH)ft_memmove.c \
 $(PATH)ft_memset.c \
 $(PATH)ft_strdel.c \
-$(PATH)ft_lstnew.c \
+y$(PATH)ft_lstnew.c \
 $(PATH)ft_lstdel.c \
 $(PATH)ft_lstdelone.c \
 $(PATH)ft_sqrt.c
