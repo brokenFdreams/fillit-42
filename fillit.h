@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:08:28 by fsinged           #+#    #+#             */
-/*   Updated: 2019/04/30 13:10:36 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/05/07 15:15:44 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,8 @@ char	*create_map(t_list **tlist, int *width);
 void	scale_map(char **map, int *width, int scale);
 void	del(void *content, size_t size);
 int		ft_list_size(t_list *begin_list);
+void	reset_isol(char *map, char *cnt, int *mas);
+int		is_isolated(char *map, char *cnt, int *mas);
+void	ft_setchar(char *map);
 
 #endif

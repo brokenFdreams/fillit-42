@@ -6,7 +6,7 @@
 #    By: fsinged <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/29 12:34:13 by fsinged           #+#    #+#              #
-#    Updated: 2019/04/30 14:59:51 by fsinged          ###   ########.fr        #
+#    Updated: 2019/05/07 15:16:20 by fsinged          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -26,6 +26,8 @@ $(PATH)ft_strdel.c \
 $(PATH)ft_lstnew.c \
 $(PATH)ft_lstdel.c \
 $(PATH)ft_lstdelone.c \
+$(PATH)isolated.c \
+$(PATH)ft_setchar.c \
 $(PATH)ft_sqrt.c
 OBJ = $(SRCS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
