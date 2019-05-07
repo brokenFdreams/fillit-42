@@ -6,7 +6,7 @@
 /*   By: acalandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 14:30:10 by acalandr          #+#    #+#             */
-/*   Updated: 2019/05/07 15:50:25 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/05/07 16:05:19 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,29 +78,29 @@ void	add_tetri(t_list **tlist, int *mas, const char *data)
 	ft_list_push_back(tlist, sar);
 }
 
-void	scale_tetri(t_list **tlist, int width, int scale)
+void	scale_tetri(t_list **tlist, int scale)
 {
-	t_list	*list;
-	char	*sar;
-	int		i;
-	int		old;
+	t_list *list;
+	char	old[3];
+	int		l;
+	char	*cnt;
 
-	width++;
 	list = *tlist;
-	while (list && (sar = list->content))
+	while (list && (cnt = list->content))
 	{
-		i = -1;
-		while (++i < 3)
-			if (((i == 0 && sar[i] != 1) || (i - 1 >= 0 && sar[i - 1] != old)
-			|| (i - 1 >= 0 && sar[i] - sar[i - 1] != 1)) && (old = sar[i]))
-			{
-				if ((sar[i] * 10 / width) % 10 >= 5)
-					(sar[i] += sar[i] / width * scale + scale);
-				else
-					(sar[i] += sar[i] / width * scale);
-			}
-			else
-				old = sar[i];
+		l = 0;
+		old[0] = cnt[0];
+		old[1] = cnt[1];
+		old[2] = cnt[2];
+		if (old[0] != 1)
+			l += scale;
+		cnt[0] += l;
+		if (old[1] - old[0] != 1)
+			l += scale;
+		cnt[1] += l;
+		if (old[2] - old [1] != 1)
+			l += scale;
+		cnt[2] += l;
 		list = list->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: acalandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 14:30:57 by acalandr          #+#    #+#             */
-/*   Updated: 2019/05/02 14:31:04 by acalandr         ###   ########.fr       */
+/*   Updated: 2019/05/07 16:02:02 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*create_map(t_list **tlist, int *width)
 	if (!(map = (char*)malloc(size + 1)))
 		ft_error();
 	map = fill_map(map, *width);
-	scale_tetri(tlist, 4, *width - 4);
+	scale_tetri(tlist, *width - 4);
 	return (map);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 15:08:28 by fsinged           #+#    #+#             */
-/*   Updated: 2019/05/07 15:15:44 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/05/07 16:02:39 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,10 @@ void	ft_error(void);
 void	check_data(char *data, t_list **tlist);
 void	read_file(char *file, char *buf);
 void	add_tetri(t_list **tlist, int *mas, const char *data);
-void	scale_tetri(t_list **tlist, int width, int scale);
+void	scale_tetri(t_list **tlist, int scale);
 char	*create_map(t_list **tlist, int *width);
 void	scale_map(char **map, int *width, int scale);
 void	del(void *content, size_t size);
 int		ft_list_size(t_list *begin_list);
-void	reset_isol(char *map, char *cnt, int *mas);
-int		is_isolated(char *map, char *cnt, int *mas);
-void	ft_setchar(char *map);
 
 #endif
